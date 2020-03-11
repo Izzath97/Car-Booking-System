@@ -1,0 +1,4 @@
+﻿INSERT INTO [dbo].[Users] ([Name], [Age], [Gender], [ContactNumber], [Address], [Pic], [Email], [Password], [Type]) VALUES (N'Izzath              ', 23, N'Male', 11, N'Colombo', N'asd', N'asd', N'123', N'user')
+INSERT INTO [dbo].[Users] ([Name], [Age], [Gender], [ContactNumber], [Address], [Pic], [Email], [Password], [Type]) VALUES (N'Sabu                ', 22, N'Male', 11, N'Colombo', N'asd', N'fff', N'456', N'user')
+INSERT INTO [dbo].[Users] ([Name], [Age], [Gender], [ContactNumber], [Address], [Pic], [Email], [Password], [Type]) VALUES (N'Arshad              ', 23, N'Male', 25, N'Dehiwala', N'Norway', N'ffff', N'789', N'user')
+INSERT INTO [dbo].[Users] ([Name], [Age], [Gender], [ContactNumber], [Address], [Pic], [Email], [Password], [Type]) VALUES (N'Aakiif', 20, N'Male', 776630022, N'Mount', N'logo.jpg', N'aakif@gmail.com', N'aakiif', NULL)

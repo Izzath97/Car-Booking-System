@@ -1,0 +1,92 @@
+﻿@model banger.Models.AddOns
+@{
+    Layout = "AdminLayout";
+}
+<center>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                @if (ViewBag.type == null)
+                {
+                    <h3> <strong>Add AddOns</strong></h3>
+                }
+                else
+                {
+                    <strong>Update AddOns</strong>
+                }
+            </div>
+            <div class="card-body card-block">
+                <form class="form-horizontal" method="post" enctype="multipart/form-data" asp-controller="vehicle" asp-action="addAddOns">
+
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label class=" form-control-label"></label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <p class="form-control-static"></p>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Equipment Name</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input asp-for="Equipment" type="text" placeholder="Equipment Name" class="form-control">
+                            <small class="form-text text-muted">Enter the AddOn Name</small>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Amount</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input asp-for="Amount" type="number" placeholder="Amount" class="form-control">
+                            <small class="form-text text-muted">Amount Per KM</small>
+                        </div>
+                    </div>
+
+
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Quantity</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input asp-for="Quantity" type="number" placeholder="Quantity" class="form-control">
+                            <small class="form-text text-muted"></small>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-9">
+                        <input asp-for="AddOnsID" type="hidden" placeholder="Quantity" class="form-control">
+                        <small class="form-text text-muted"></small>
+                    </div>
+                    <div class="card-footer">
+                        @if (ViewBag.type == null)
+                        {
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                <i class="fa fa-dot-circle-o"></i> Submit
+                            </button>
+                        }
+                        else
+                        {
+                            <button type="submit" asp-controller="vehicle" asp-action="updateAddOns" class="btn btn-primary btn-sm">
+                                <i class="fa fa-dot-circle-o"></i> Update
+                            </button>
+                        }
+
+                        <button type="reset" class="btn btn-danger btn-sm">
+                            <i class="fa fa-ban"></i> Reset
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</center>

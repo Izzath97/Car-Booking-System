@@ -1,0 +1,72 @@
+﻿@model IEnumerable<banger.Models.Users>
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    Layout = "AdminLayout";
+}
+<br>
+
+<h2>Customers</h2>
+<hr />
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pic)
+            </th>
+       
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                <img src="~/images/@Html.DisplayFor(modelItem => item.Pic)" height="50" width="50" alt="JSOFT">
+            </td>
+            @if (item.Status == "Blocked")
+            {
+                <td>
+                    <a asp-action="DisableUser" asp-route-id="@item.Email" asp-route-status="Enable"><i class="fa fa-marker fa-lg"></i>Enable</a>
+
+                </td>
+
+            }
+            else
+            {
+                <td>
+                    <a asp-action="DisableUser" asp-route-id="@item.Email" asp-route-status="Blocked"><i class="fa fa-marker fa-lg"></i>Disable</a>
+
+                </td>
+            }
+
+        </tr>
+        }
+    </tbody>
+</table>

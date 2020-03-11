@@ -1,0 +1,166 @@
+﻿@model banger.Models.Bookings
+@{
+    Layout = "AdminLayout";
+}
+
+
+
+
+<center>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+
+                <h3> <strong>Collect Vehicles</strong></h3>
+
+
+
+            </div>
+       
+            <div class="card-body card-block">
+                <form class="form-horizontal" method="post" enctype="multipart/form-data" asp-controller="vehicle" asp-action="collectPayment">
+
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label class=" form-control-label"></label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <p class="form-control-static"></p>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Booking No</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input asp-for="BookingID" type="text" readonly class="form-control">
+
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Pick-Up Date</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input asp-for="PickUpDate" type="text" readonly class="form-control">
+
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Return-Up Date</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input asp-for="ReturnDate" type="text" readonly class="form-control">
+
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Vehicle No</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input asp-for="VehicleNo" type="text" readonly class="form-control">
+
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Email</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input asp-for="Email" type="text" readonly class="form-control">
+
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Equipment</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input asp-for="Equipment" type="text" readonly class="form-control">
+
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">License No</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input asp-for="LicenseNo" type="text" readonly class="form-control">
+
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Nic NO</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input asp-for="NICNo" type="text" placeholder="NIC No" class="form-control" readonly>
+
+                        </div>
+                    </div>
+
+                    @if (TempData["amount"] == null)
+                    {
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">KM Travelled</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input asp-route-id="value" name="id" type="text" placeholder="KM Travelled" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">Returned Date</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input asp-route-value="value" name="value" type="date" placeholder="Todays Date" class="form-control" required>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">Amount</label>
+                            </div>
+                            <div class="col col-md-3">
+                                <input asp-for="Amount" value="@TempData["Amount"]" class="form-control" readonly>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="col col-md-3">
+                        <input asp-for="Pic" type="hidden" placeholder="KM Travelled" class="form-control" readonly>
+                    </div>
+                    <div class="col col-md-3">
+                        <input asp-for="PicExtra" type="hidden" placeholder="KM Travelled" class="form-control" readonly>
+                    </div>
+
+                    <div class="col col-md-3">
+                        <input asp-for="Amount" name="Amount" type="hidden" value="Rs @TempData["Amount"]" class="form-control" readonly>
+                    </div>
+                    <div class="card-footer">
+
+                        <button type="submit" method="post" class="btn btn-primary btn-sm">
+
+                            <h3>Submit</h3>
+                        </button>
+
+                        <button type="reset" class="btn btn-danger btn-sm">
+                            <h3>Reset</h3>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</center>
+
+

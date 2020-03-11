@@ -1,0 +1,201 @@
+﻿@model banger.Models.Vehicle
+@{
+    Layout = "AdminLayout";
+}
+
+
+
+@if (ViewBag.message != null)
+{
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <strong> @ViewBag.message</strong>
+    </div>
+  
+}
+else
+{
+
+}
+
+
+
+<center>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                @if (ViewBag.type == null)
+                {
+                   <h3> <strong>Add Vehicles</strong></h3>
+                }
+                else
+                {
+                    <strong>Update Vehicles</strong>
+                }
+            </div>
+            <div class="card-body card-block">
+                <form class="form-horizontal" method="post" enctype="multipart/form-data" asp-controller="vehicle" asp-action="addVehicles">
+
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label class=" form-control-label"></label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <p class="form-control-static"></p>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Vehicle No</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input asp-for="VehicleNo" type="text" placeholder="Vehicle No" class="form-control">
+                            <small class="form-text text-muted">Enter the Vehicle Number eg: CAA- 2502</small>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="select" class=" form-control-label">Vehicle Type</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <select asp-for="VehicleType" class="form-control">
+                                <option value="0">Please select</option>
+                                <option value="Small Town Car Hybrid">Small Town Car </option>
+                                <option value="Small Family HatchBack Diesel Auto">Small Family HatchBack </option>
+                                <option value="Large Family Saloon">Large Family Saloon </option>
+                                <option value="Large Family Estate">Large Family Estate</option>
+                                <option value="Medium Van">Medium Van</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="select" class=" form-control-label">Age Restriction:</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input  asp-for="VehicleAvailability" type='radio' name='group' ng-model='mValue' value='true' />Available
+                            <input  asp-for="VehicleAvailability" type='radio' name='group' ng-model='mValue' value='false' /> Not Available
+                      
+                        </div>
+                    </div>
+                   
+
+
+
+
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Amount</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input asp-for="Amount" type="number" placeholder="Amount" class="form-control">
+                            <small class="form-text text-muted">Amount Per KM</small>
+                        </div>
+                    </div>
+                    <h4>Additional Information</h4>
+                    <br>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="text-input" class=" form-control-label">Doors</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input asp-for="Doors" type="number" placeholder="Door" class="form-control">
+                            <small class="form-text text-muted">Number of Doors</small>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="select" class=" form-control-label">Gear Box</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <select asp-for="GearBox" class="form-control">
+                                <option value="0">Please select</option>
+                                <option value="Automatic">Automatic</option>
+                                <option value="Manual">Manual</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="select" class=" form-control-label">Facilities</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <select asp-for="Facilities" class="form-control">
+                                <option value="0">Please select</option>
+                                <option value="AC">AC</option>
+                                <option value="Non-AC">Non-AC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="select" class=" form-control-label">Fuel Type</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <select asp-for="FuelType" class="form-control">
+                                <option value="0">Please select</option>
+                                <option value="Petrol">Petrol</option>
+                                <option value="Diesel">Diesel</option>
+                                <option value="Hybrid">Hybrid</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="select" class=" form-control-label">Class</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <select asp-for="Class" class="form-control">
+                                <option value="0">Please select</option>
+                                <option value="Compact">Compact</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="file-input" class=" form-control-label">File input</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input asp-for="Pic" type="file" name="Photo" class="form-control-file">
+                        </div>
+                    </div>
+                    <div class="card-footer">
+
+                        @if (ViewBag.type == null)
+                        {
+                            <button type="submit" method="post" class="btn btn-primary btn-sm">
+
+                                <h3>Submit</h3>
+                            </button>
+                        }
+                        else
+                        {
+                            <button type="submit" method="post" asp-controller="vehicle" asp-action="updateVehicles" class="btn btn-primary btn-sm">
+
+                                <h3>Update</h3>
+                            </button>
+                        }
+
+
+
+
+
+
+
+
+
+                        <button type="reset" class="btn btn-danger btn-sm">
+                            <h3>Reset</h3>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</center>

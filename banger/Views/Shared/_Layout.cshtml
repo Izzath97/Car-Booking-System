@@ -1,0 +1,302 @@
+﻿@using Microsoft.AspNetCore.Http;
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="~/Content/favicon.ico" type="image/x-icon" />
+
+    <title>Banger</title>
+    <!--=== Bootstrap CSS ===-->
+    <link href="@Url.Content("~/Content/assets/css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <!--=== Slicknav CSS ===-->
+    <link href="@Url.Content("~/Content/assets/css/plugins/slicknav.min.css")" type="text/css" rel="stylesheet" />
+    <!--=== Magnific Popup CSS ===-->
+    <link href="@Url.Content("~/Content/assets/css/plugins/magnific-popup.css")" rel="stylesheet" type="text/css" />
+    <!--=== Owl Carousel CSS ===-->
+    <link href="@Url.Content("~/Content/assets/css/plugins/owl.carousel.min.css")" rel="stylesheet" type="text/css" />
+    <!--=== Gijgo CSS ===-->
+    <link href="@Url.Content("~/Content/assets/css/plugins/gijgo.css")" rel="stylesheet" type="text/css" />
+    <!--=== FontAwesome CSS ===-->
+    <link href="@Url.Content("~/Content/assets/css/font-awesome.css")" rel="stylesheet" type="text/css" />
+    <!--=== Theme Reset CSS ===-->
+    <link href="@Url.Content("~/Content/assets/css/reset.css")" rel="stylesheet" type="text/css" />
+    <!--=== Main Style CSS ===-->
+    <link href="@Url.Content("~/Content/style.css")" rel="stylesheet" type="text/css" />
+    <!--=== Responsive CSS ===-->
+    <link href="@Url.Content("~/Content/assets/css/responsive.css")" rel="stylesheet" type="text/css" />
+
+    <style>
+        .alert {
+            padding: 10px;
+            background-color: #f44336;
+            color: white;
+        }
+
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+            .closebtn:hover {
+                color: black;
+            }
+    </style>s
+
+</head>
+
+<body class="loader-active">
+
+    <!--== Preloader Area Start ==-->
+
+    <!--== Preloader Area End ==-->
+    <!--== Header Area Start ==-->
+    <header id="header-area" class="fixed-top">
+        <!--== Header Top Start ==-->
+        <div id="header-top" class="d-none d-xl-block">
+            <div class="container">
+                <div class="row">
+                    <!--== Single HeaderTop Start ==-->
+                    <div class="col-lg-3 text-left">
+                        <i class="fa fa-map-marker"></i> APIIT SRI LANKA
+                    </div>
+
+
+                    <!--== Single HeaderTop End ==-->
+                    <!--== Single HeaderTop Start ==-->
+                    <div class="col-lg-3 text-center">
+                        <i class="fa fa-mobile"></i> +94 776307850
+                    </div>
+                    <!--== Single HeaderTop End ==-->
+                    <!--== Single HeaderTop Start ==-->
+                    <div class="col-lg-3 text-center">
+                        <i class="fa fa-clock-o"></i> Mon-Fri 09.00 - 17.00
+                    </div>
+                    <!--== Single HeaderTop End ==-->
+                    <!--== Social Icons Start ==-->
+                    @if (Context.Session.GetString("email") != null)
+                    {
+                        <div class="col-lg-3 text-right">
+                            <div class="header-social-icons">
+                                <a><i>@Context.Session.GetString("email")</i></a>
+                                <a asp-controller="user" asp-action="logOut"><i>Logout</i></a>
+
+                            </div>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div class="col-lg-3 text-right">
+                            <div class="header-social-icons">
+                                <a asp-controller="user" asp-action="register"><i>Sign Up</i></a>
+                                <a asp-controller="user" asp-action="login"><i>Sign IN</i></a>
+
+                            </div>
+                        </div>
+                    }
+
+                    <!--== Social Icons End ==-->
+                </div>
+            </div>
+        </div>
+        <!--== Header Top End ==-->
+        <!--== Header Bottom Start ==-->
+        <div id="header-bottom">
+            <div class="container">
+                <div class="row">
+                    <!--== Logo Start ==-->
+                    <div class="col-lg-4">
+                        <a href="index.html" class="logo">
+
+                            <img src="~/Content/assets/img/logo.png" alt="JSOFT">
+                        </a>
+                    </div>
+                    <!--== Logo End ==-->
+                    <!--== Main Menu Start ==-->
+                    <div class="col-lg-8 d-none d-xl-block">
+                        <nav class="mainmenu alignright">
+                            <ul>
+                                <li>
+                                    <a asp-controller="user" asp-action="home">Home</a>
+
+                                </li>
+                                <li><a asp-controller="user" asp-action="about">About</a></li>
+                                <li><a asp-controller="user" asp-action="service">services</a></li>
+                                <li>
+                                    <a asp-controller="vehicle" asp-action="cars">Cars</a>
+
+                                </li>
+                               
+                                @if (Context.Session.GetString("email") != null)
+                                {
+                                    <li class="active">
+                                        <a asp-controller="user" asp-action="viewBookings">My Bookings</a>
+
+                                    </li>
+                                    <li class="active">
+                                        <a asp-controller="user" asp-action="profile">Profile</a>
+
+                                    </li>
+                                }
+                                <li><a asp-controller="vehicle" asp-action="contacts">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!--== Main Menu End ==-->
+                </div>
+            </div>
+        </div>
+        <!--== Header Bottom End ==-->
+    </header>
+    <!--== Header Area End ==-->
+    <!--== Page Title Area Start ==-->
+
+    <div>
+        <partial name="_CookieConsentPartial" />
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <!--== Page Title Area End ==-->
+    <!--== Footer Area Start ==-->
+    <section id="footer-area">
+        <!-- Footer Widget Start -->
+        <div class="footer-widget-area">
+            <div class="container">
+                <div class="row">
+                    <!-- Single Footer Widget Start -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-footer-widget">
+                            <h2>About Us</h2>
+                            <div class="widget-body">
+                                <img src="assets/img/logo.png" alt="JSOFT">
+                                <p>We Banger Rent Car, Sri Lanka's premium car rental service provider since 2000.</p>
+
+                                <div class="newsletter-area">
+                                    <form action="index.html">
+                                        <input type="email" placeholder="Subscribe Our Newsletter">
+                                        <button type="submit" class="newsletter-btn"><i class="fa fa-send"></i></button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Widget End -->
+                    <!-- Single Footer Widget Start -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-footer-widget">
+                            <h2>Related Links</h2>
+                            <div class="widget-body">
+                                <ul class="recent-post">
+                                    <li>
+                                        <a asp-controller="user" asp-action="about">
+                                            About Us
+                                            <i class="fa fa-long-arrow-right"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="vehicle" asp-action="cars">
+                                           Our Vehicles
+                                            <i class="fa fa-long-arrow-right"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="vehicle" asp-action="contact">
+                                            Contact Us
+                                            <i class="fa fa-long-arrow-right"></i>
+                                        </a>
+                                    </li>
+                                  
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Widget End -->
+                    <!-- Single Footer Widget Start -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-footer-widget">
+                            <h2>get touch</h2>
+                            <div class="widget-body">
+                                <p>Contact Information</p>
+
+                                <ul class="get-touch">
+                                    <li><i class="fa fa-map-marker"></i> Apiit Srilanka</li>
+                                    <li><i class="fa fa-mobile"></i> +97 776307850</li>
+                                    <li><i class="fa fa-envelope"></i> banger@gmail.com</li>
+                                </ul>
+                                <a href="https://goo.gl/maps/b5mt45MCaPB2" class="map-show" target="_blank">Show Location</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Widget End -->
+                </div>
+            </div>
+        </div>
+        <!-- Footer Widget End -->
+        <!-- Footer Bottom Start -->
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <p>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved | banger<i class="fa fa-heart-o" aria-hidden="true"></i> 
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Bottom End -->
+    </section>
+    <!--== Footer Area End ==-->
+    <!--== Scroll Top Area Start ==-->
+    <div class="scroll-top">
+        <img src="~/Content/assets/img/scroll-top.png" alt="JSOFT">
+    </div>
+
+    <!--=== Jquery Min Js ===-->
+    <script src="~/Content/assets/js/jquery-3.2.1.min.js"></script>
+    <!--=== Jquery Migrate Min Js ===-->
+    <script src="~/Content/assets/js/jquery-migrate.min.js"></script>
+    <!--=== Popper Min Js ===-->
+    <script src="~/Content/assets/js/popper.min.js"></script>
+    <!--=== Bootstrap Min Js ===-->
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+    <!--=== Gijgo Min Js ===-->
+    <script src="~/Content/assets/js/plugins/gijgo.js"></script>
+    <!--=== Vegas Min Js ===-->
+    <script src="~/Content/assets/js/plugins/vegas.min.js"></script>
+    <!--=== Isotope Min Js ===-->
+    <script src="~/Content/assets/js/plugins/isotope.min.js"></script>
+    <!--=== Owl Caousel Min Js ===-->
+    <script src="~/Content/assets/js/plugins/owl.carousel.min.js"></script>
+    <!--=== Waypoint Min Js ===-->
+    <script src="~/Content/assets/js/plugins/waypoints.min.js"></script>
+    <!--=== CounTotop Min Js ===-->
+    <script src="~/Content/assets/js/plugins/counterup.min.js"></script>
+    <!--=== YtPlayer Min Js ===-->
+    <script src="~/Content/assets/js/plugins/mb.YTPlayer.js"></script>
+    <!--=== Magnific Popup Min Js ===-->
+    <script src="~/Content/assets/js/plugins/magnific-popup.min.js"></script>
+    <!--=== Slicknav Min Js ===-->
+    <script src="~/Content/assets/js/plugins/slicknav.min.js"></script>
+
+    <!--=== Mian Js ===-->
+    <script src="~/Content/assets/js/main.js"></script>
+
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

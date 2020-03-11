@@ -1,0 +1,66 @@
+﻿@model IEnumerable<banger.Models.Vehicle>
+
+
+@{
+    Layout = "AdminLayout";
+}
+
+
+<center>
+    <div class="row m-t-30">
+        <div class="col-md-12">
+           
+            <!-- DATA TABLE-->
+            <div class="table-responsive m-b-40">
+               @if (TempData["message"]!=null) {
+                <div class="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <strong>@TempData["message"]</strong>
+                </div>
+               }
+                <table class="table table-borderless table-data3">
+                    <thead>
+                        <tr>
+                            <th>  @Html.DisplayNameFor(model => model.VehicleNo)</th>
+                            <th>  @Html.DisplayNameFor(model => model.VehicleType)</th>
+                            <th>  @Html.DisplayNameFor(model => model.VehicleAvailability)</th>
+                            <th>  @Html.DisplayNameFor(model => model.Amount)</th>
+                            <th>  @Html.DisplayNameFor(model => model.Pic)</th>
+                            <th>  Edit</th>
+                            <th>  Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.VehicleNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.VehicleType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.VehicleAvailability)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>
+                            <td>
+                                <img src="~/images/@Html.DisplayFor(modelItem => item.Pic)" height="50" width="50" alt="JSOFT">
+                            </td>
+                            <td>
+                                <a asp-action="AddVehicle" asp-route-num="@item.VehicleNo"><i class="fa fa-edit"></i>Edit</a>
+                                </td>
+                            <td>
+                                 <a asp-action="DeleteVehicle" asp-route-id="@item.VehicleNo" class="text-danger ml-1" onclick="return confirm('Are you sure to delete this record?')"><i class="fa fa-trash-alt fa-lg"></i>Remove</a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- END DATA TABLE-->
+        </div>
+    </div>
+</center>

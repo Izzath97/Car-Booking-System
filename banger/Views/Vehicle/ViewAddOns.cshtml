@@ -1,0 +1,62 @@
+﻿@model IEnumerable<banger.Models.AddOns>
+
+
+@{
+    Layout = "AdminLayout";
+}
+<center>
+    <div class="row m-t-30">
+        <div class="col-md-12">
+            <!-- DATA TABLE-->
+            <div class="table-responsive m-b-40">
+                @if (TempData["message"] != null)
+                {
+                    <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                        <strong>@TempData["message"]</strong>
+                    </div>
+                }
+                <table class="table table-borderless table-data3">
+                    <thead>
+                        <tr>
+                            <th>  @Html.DisplayNameFor(model => model.Equipment)</th>
+                            <th>  @Html.DisplayNameFor(model => model.Availability)</th>
+                            <th>  @Html.DisplayNameFor(model => model.Quantity)</th>
+                            <th>  @Html.DisplayNameFor(model => model.Amount)</th>
+                            <th> Edit </th>
+                            <th> Delete </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Equipment)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Availability)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>
+                            <td>
+                                <a asp-action="AddAddOns" asp-route-num="@item.AddOnsID"><i class="fa fa-edit"></i>Edit</a>
+                                   </td>
+                            <td>
+                                 <a asp-action="DeleteAddOns" asp-route-id="@item.AddOnsID" class="text-danger ml-1" onclick="return confirm('Are you sure to delete this record?')"><i class="fa fa-trash-alt fa-lg"></i>Remove</a>
+                            </td>
+
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- END DATA TABLE-->
+        </div>
+    </div>
+</center>

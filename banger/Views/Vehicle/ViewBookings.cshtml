@@ -1,0 +1,63 @@
+﻿@model IEnumerable<banger.Models.Bookings>
+@{
+    Layout = "AdminLayout";
+}
+
+<center>
+    <div class="row m-t-30">
+        <div class="col-md-12">
+            <!-- DATA TABLE-->
+            <div class="table-responsive m-b-40">
+                <table class="table table-borderless table-data3">
+                    <thead>
+                        <tr>
+                            <th>  @Html.DisplayNameFor(model => model.BookingID)</th>
+                     
+                            <th>  @Html.DisplayNameFor(model => model.PickUpDate)</th>
+                            <th>  @Html.DisplayNameFor(model => model.ReturnDate)</th>
+                            <th>  @Html.DisplayNameFor(model => model.VehicleNo)</th>
+                            <th>  @Html.DisplayNameFor(model => model.Email)</th>
+                            <th>  @Html.DisplayNameFor(model => model.Equipment)</th>
+                            <th>  Update Booking</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BookingID)
+                            </td>
+                          
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PickUpDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ReturnDate)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.VehicleNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Equipment)
+                            </td>
+                            <td>
+                                <a asp-action="UpdateBookings" asp-route-num="@item.BookingID"><i class="fa fa-edit"></i>Update</a>
+                            </td>
+
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- END DATA TABLE-->
+        </div>
+    </div>
+</center>
+

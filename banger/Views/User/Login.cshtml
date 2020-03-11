@@ -1,0 +1,59 @@
+﻿@model banger.Models.Users
+<!--== Login Page Content Start ==-->
+<alert>
+    <h4>
+    @ViewBag.message
+        </h4>
+</alert>
+<section id="lgoin-page-wrap" class="section-padding">
+    <div class="container">
+
+        @if (TempData["message"] != null)
+        {
+            <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <strong> @TempData["message"]</strong>
+            </div>
+
+        }
+
+
+        <div class="row">
+            <div class="col-lg-4 col-md-8 m-auto">
+                <div class="login-page-content">
+                    <div class="login-form">
+
+
+                        <h3>Welcome Back!</h3>
+                        <form method="post" enctype="multipart/form-data" asp-controller="user" asp-action="login">
+                            <div class="username">
+                                <input asp-for="Email" type="text" placeholder="Email">
+                            </div>
+                            <div class="password">
+                                <input asp-for="Password" type="password" placeholder="Password">
+                            </div>
+                            <div class="log-btn">
+                                <button type="submit"><i class="fa fa-sign-in"></i> Log In</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="login-other">
+                        <span class="or">or</span>
+                        <a href="#" class="login-with-btn facebook"><i class="fa fa-facebook"></i> Login With Facebook</a>
+                        <a href="#" class="login-with-btn google"><i class="fa fa-google"></i> Login With Google</a>
+                    </div>
+                    <div class="create-ac">
+                        <p>Don't have an account? <a asp-controller="user" asp-action="register">Sign Up</a></p>
+                    </div>
+                    <div class="login-menu">
+                        <a asp-controller="user" asp-action="about">About</a>
+                        <span>|</span>
+                        <a asp-controller="vehicle" asp-action="contact">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--== Login Page Content End ==-->
